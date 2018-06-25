@@ -1,5 +1,5 @@
 <p align="center">
-<img src="images/logo.png" alt="MoonLake" />
+<img src="learnlogs/static/imgs/logo.png" alt="MoonLake" />
 </p>
 
 <p align="center">
@@ -9,8 +9,8 @@
 
 ## 介绍
 
--
-月色之湖的web，此版本为python语言，django框架，php版本请查看[Override](https://github.com/McMoonLakeDev/Website) 仓库.
+- 月色之湖的web，此版本为python语言，django框架，php版本请查看[Website](https://github.com/McMoonLakeDev/Website) 仓库.
+- 示例网址[learnlog](http://www.syf520.com).（代码改动不会实时同步）
 
 ## 第三方包
 
@@ -47,10 +47,10 @@ python版本：3.6.1
 
 ## 部署
 仅针对 nginx+uwsgi 环境，此配置适用于多站点配置
-1、将 uwsgi.ini 放入linux服务器
-2、命令 uwsgi --ini uwsgi
-3、将 nginx_web.conf 放入nginx的vhost配置文件夹，并且适当更改一些路径
-4、运行nginx
+- 将 uwsgi.ini 放入linux服务器
+- 命令 uwsgi --ini uwsgi
+- 将 nginx_web.conf 放入nginx的vhost配置文件夹，并且适当更改一些路径
+- 运行nginx
 
 ## 协议
 
