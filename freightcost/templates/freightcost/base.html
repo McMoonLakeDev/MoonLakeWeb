@@ -1,0 +1,126 @@
+{% load bootstrap3 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>报销系统</title>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link href="{% static 'css/navoff.css' %}" rel="stylesheet">
+    <script src="{% static 'js/navoff.js' %}"></script>
+    <style>
+        .navbar {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+            </button>
+            <a class="navbar-brand"
+               href="{% url 'freightcost:index' %}">报销系统</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false"
+             style="height: 1px;">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{% url 'freightcost:entries' %}">报销列表</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li>
+                        <a>你好,{{ user.realname }}.</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'users:logout' %}">注销</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'users:register' %}">注册</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'users:login' %}">登陆</a>
+                    </li>
+                {% endif %}
+
+{#                <li class="dropdown">#}
+{#                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"#}
+{#                       role="button" aria-haspopup="true"#}
+{#                       aria-expanded="false">{% trans 'choise language' request.session %}#}
+{#                        <span class="caret"></span></a>#}
+{#                    <ul class="dropdown-menu">#}
+{#                        <li class="dropdown-header">{% trans 'language' request.session %}</li>#}
+{#                        {% get_language_list as languages%}#}
+{#                        {% for language_simple,language_text in languages.items %}#}
+{#                            <li>#}
+{#                                <a href="{% url 'freightcost:change_language' language_simple %}">{{ language_text }}</a>#}
+{#                            </li>#}
+{#                        {% endfor %}#}
+                        {#                        <li><a href="{% url 'freightcost:change_language' 'en-US' %}">english</a>#}
+                        {#                        </li>#}
+{#                    </ul>#}
+{#                </li>#}
+            </ul>
+        </div>
+    </div><!-- /.nav-collapse -->
+</nav>
+
+
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+{#            {% if user.is_authenticated %}#}
+{#                <p class="pull-right visible-xs">#}
+{#                    <button type="button" class="btn btn-primary btn-xs"#}
+{#                            data-toggle="offcanvas">切换右侧菜单#}
+{#                    </button>#}
+{#                </p>#}
+{#            {% endif %}#}
+
+            <div class="page-header">
+                {% block header %}{% endblock header %}
+            </div>
+            <div>
+                {% block content %}{% endblock content %}
+            </div>
+        </div>
+
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+{#            {% if user.is_authenticated %}#}
+{#                <div class="list-group">#}
+                    {#            <a href="#" class="list-group-item active">Link</a>#}
+{##}
+{#                    {% get_right_nav request.user as navs %}#}
+{#                    {% for nav in navs %}#}
+{#                        <a href="{% url 'freightcost:topic' nav.id %}"#}
+{#                           class="list-group-item">{{ nav }}</a>#}
+{#                    {% empty %}#}
+{#                        <a href="{% url "freightcost:new_topic" %}"#}
+{#                           class="list-group-item"><span#}
+{#                                class="glyphicon glyphicon-plus"#}
+{#                                aria-hidden="true"></span> {% trans 'add some topic' request.session %}?</a>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            {% endif %}#}
+        </div>
+    </div>
+</div><!-- /container -->
+
+</body>
+</html>

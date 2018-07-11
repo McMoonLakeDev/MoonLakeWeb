@@ -1,0 +1,19 @@
+{% extends "freightcost/base.html" %}
+{% block header %}
+    <div class="jumbotron">
+        <h1>货车报销系统.</h1>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    {% if not user.is_authenticated %}
+        <h2>
+            <a href="{% url 'users:register' %}">
+                创建一个账号</a>
+            用来合理的报销
+        </h2>
+    {% endif %}
+    <h2>
+        无论你开货车到了什么地点，只要因为公事消费，都可以添加报销记录
+    </h2>
+{% endblock content %}
