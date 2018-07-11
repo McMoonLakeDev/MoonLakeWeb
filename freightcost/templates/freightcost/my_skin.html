@@ -1,0 +1,27 @@
+{% extends "freightcost/base.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% block top %}
+    <h1>报销列表</h1>
+{% endblock top %}
+{% block content %}
+    <div>
+        {% for entry in entries %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>{{ entry.date_added|date:'Y-m-d H:i:s' }}
+                        <small>
+                            <a href="{% url 'freightcost:edit_entry' entry.bxno %}">
+                                更改报销记录</a>
+                        </small>
+                    </h3>
+                </div>
+                <img src="{{ entry.img }}" class="img-responsive" alt="Responsive image">
+                <div class="panel-body"> {{ entry.text|linebreaks }}</div>
+            </div>
+        {% empty %}
+            <h1>没有未审核的报销记录.</h1>
+        {% endfor %}
+        <h3><a href="{% url 'freightcost:new_entry' %}">添加一个新的报销记录</a></h3>
+    </div>
+{% endblock content %}

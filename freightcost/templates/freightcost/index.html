@@ -1,0 +1,20 @@
+{% extends "freightcost/base.html" %}
+{% load static %}
+{% block top %}
+    <div class="jumbotron">
+        <h1>月色之湖</h1>
+    </div>
+{% endblock top %}
+
+{% block content %}
+    {% if not user.is_authenticated %}
+        <h2>
+            <a href="{% url 'users:register' %}">
+                注册一个账号</a>
+            来一起van♂
+        </h2>
+    {% endif %}
+    <h2>
+        悄悄的py交易
+    </h2>
+{% endblock content %}

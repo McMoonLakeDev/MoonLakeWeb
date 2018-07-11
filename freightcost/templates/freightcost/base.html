@@ -1,0 +1,160 @@
+{% load bootstrap3 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>月色之湖</title>
+
+{#    {% bootstrap_css %}#}
+    {% bootstrap_javascript %}
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/solar/bootstrap.min.css" rel="stylesheet" integrity="sha384-h5kYMLFNMyLXdVYK3MKZeOfXMdU6XqV1do5KyjoYZGlW1FJOj+5qr9u1d7NNCH4N" crossorigin="anonymous">
+    <link href="{% static 'css/navoff.css' %}" rel="stylesheet">
+    <script src="{% static 'js/navoff.js' %}"></script>
+    <style>
+        .navbar {
+            margin-bottom: 20px;
+        }
+    </style>
+    {% block header %}{% endblock header %}
+</head>
+<body class="page-bootswatch">
+
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark"><a class="navbar-brand" href="{% url 'freightcost:index' %}">
+    月色之湖</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav"
+            aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="navbar-collapse collapse" id="main-nav">
+        <ul class="nav navbar-nav ml-xl-5">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'freightcost:MySkin' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的皮肤</font></font></a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你好,{{ user.nickname }}.</font></font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:logout' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注销</font></font></a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:register' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注册</font></font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:login' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登陆</font></font></a>
+                    </li>
+                {% endif %}
+        </ul>
+    </div>
+</nav>
+
+{#<!-- Static navbar -->#}
+{#<nav class="navbar navbar-expand-xl navbar-dark bg-dark">#}
+{#    <div class="container">#}
+{#        <div class="navbar-header">#}
+{#            <button type="button" class="navbar-toggle collapsed"#}
+{#                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"#}
+{#                    aria-controls="navbar">#}
+{#            </button>#}
+{#            <a class="navbar-brand"#}
+{#               href="{% url 'freightcost:index' %}">月色之湖</a>#}
+{#        </div>#}
+{##}
+{#        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false"#}
+{#             style="height: 1px;">#}
+{#            <ul class="nav navbar-nav">#}
+{#                <li>#}
+{#                    <a href="{% url 'freightcost:entries' %}">月色之湖</a>#}
+{#                </li>#}
+{#            </ul>#}
+{##}
+{#            <ul class="nav navbar-nav navbar-right">#}
+{#                {% if user.is_authenticated %}#}
+{#                    <li>#}
+{#                        <a>你好,{{ user.realname }}.</a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="{% url 'users:logout' %}">注销</a>#}
+{#                    </li>#}
+{#                {% else %}#}
+{#                    <li>#}
+{#                        <a href="{% url 'users:register' %}">注册</a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="{% url 'users:login' %}">登陆</a>#}
+{#                    </li>#}
+{#                {% endif %}#}
+
+                {#                <li class="dropdown">#}
+                {#                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"#}
+                {#                       role="button" aria-haspopup="true"#}
+                {#                       aria-expanded="false">{% trans 'choise language' request.session %}#}
+                {#                        <span class="caret"></span></a>#}
+                {#                    <ul class="dropdown-menu">#}
+                {#                        <li class="dropdown-header">{% trans 'language' request.session %}</li>#}
+                {#                        {% get_language_list as languages%}#}
+                {#                        {% for language_simple,language_text in languages.items %}#}
+                {#                            <li>#}
+                {#                                <a href="{% url 'freightcost:change_language' language_simple %}">{{ language_text }}</a>#}
+                {#                            </li>#}
+                {#                        {% endfor %}#}
+                {#                        <li><a href="{% url 'freightcost:change_language' 'en-US' %}">english</a>#}
+                {#                        </li>#}
+                {#                    </ul>#}
+                {#                </li>#}
+{#            </ul>#}
+{#        </div>#}
+{#    </div><!-- /.nav-collapse -->#}
+{#</nav>#}
+
+
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+            {#            {% if user.is_authenticated %}#}
+            {#                <p class="pull-right visible-xs">#}
+            {#                    <button type="button" class="btn btn-primary btn-xs"#}
+            {#                            data-toggle="offcanvas">切换右侧菜单#}
+            {#                    </button>#}
+            {#                </p>#}
+            {#            {% endif %}#}
+
+            <div class="page-header">
+                {% block top %}{% endblock top %}
+            </div>
+            <div>
+                {% block content %}{% endblock content %}
+            </div>
+        </div>
+
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+            {#            {% if user.is_authenticated %}#}
+            {#                <div class="list-group">#}
+            {#            <a href="#" class="list-group-item active">Link</a>#}
+            {##}
+            {#                    {% get_right_nav request.user as navs %}#}
+            {#                    {% for nav in navs %}#}
+            {#                        <a href="{% url 'freightcost:topic' nav.id %}"#}
+            {#                           class="list-group-item">{{ nav }}</a>#}
+            {#                    {% empty %}#}
+            {#                        <a href="{% url "freightcost:new_topic" %}"#}
+            {#                           class="list-group-item"><span#}
+            {#                                class="glyphicon glyphicon-plus"#}
+            {#                                aria-hidden="true"></span> {% trans 'add some topic' request.session %}?</a>#}
+            {#                    {% endfor %}#}
+            {#                </div>#}
+            {#            {% endif %}#}
+        </div>
+    </div>
+</div><!-- /container -->
+{% block bottom %}{% endblock bottom %}
+</body>
+</html>

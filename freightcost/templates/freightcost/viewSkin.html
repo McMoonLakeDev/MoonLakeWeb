@@ -1,0 +1,67 @@
+{% extends "freightcost/base.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% block header %}
+    <style>
+		body {
+			font-family: Verdana;
+			font-size: 13px;
+		}
+		#skinpreview canvas {
+			
+		}
+		
+		#skinpreview canvas.dragenter {
+			box-shadow: inset 0px 0px 64px rgba(0, 0, 0, 0.5);
+		}
+
+        {#.div-inline{ display:inline}#}
+	</style>
+{% endblock header %}
+{% block top %}
+<h1>你在服务器内的皮肤：</h1>
+{% endblock top %}
+{% block content %}
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+<div id="skinpreview" class=""></div>
+</div>
+    <div class="col-xs-12 col-md-6" id="skin_changes">
+        <div class="bs-example" data-example-id="basic-forms">
+            <form name="imageform" class="form" action="{% url 'freightcost:MySkin' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="control-label" for="fileinput">更改皮肤:</label>
+                <input type="file" name="fileinput" class="form-control" accept="image/x-png" title="只能上传64*32和64*64像素的png皮肤文件" required="" id="fileinput">
+                <div class="help-block">只能上传64*32和64*64像素的png皮肤文件</div>
+            </div>
+            {% buttons %}
+            <button name="submit" class="btn btn-primary">
+                上传更改
+            </button>
+            {% endbuttons %}
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+
+
+<g:plusone></g:plusone>
+{% endblock content %}
+{% block bottom %}
+    <p>
+    	Skin loader and model <a href="main.js" target="_blank">code</a> is made by djazz<br>
+	Powered by <a href="https://github.com/mrdoob/three.js/" target="_blank">Three.js</a><br>
+        </p>
+<script>
+    	var skin_url = "{% static skin_url %}";
+</script>
+<script src="{% static 'js/Three.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock bottom %}
