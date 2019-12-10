@@ -10,7 +10,7 @@
 ## 介绍
 
 - 月色之湖的web，此版本为python语言，django框架，php版本请查看[Website](https://github.com/McMoonLakeDev/Website) 仓库.
-- 示例网址[learnlog](http://www.syf520.com).（代码改动不会实时同步）
+- 示例网址[MoonLakeWeb](http://www.0csy.com).（代码改动不会实时同步）
 
 ## 第三方包
 
